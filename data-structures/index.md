@@ -1,6 +1,14 @@
-# Estructuras de Datos
-- - -
-## Hangar, 5-3-2015
+% Estructuras de Datos
+% Ale
+% Hangar, 5-3-2015
+
+# Referencias
+
+**Repo de processing con los ejercicios**
+[https://github.com/Ale-/codeup]()
+
+**Presentación**
+[http://workshops.wwb.cc/data-structures]()
 
 # ¿Qué son los datos?
 
@@ -8,9 +16,20 @@ Los datos son una representación lógica del estado binario en elementos físic
 
 # Los tipos primitivos y los objetos
 
-Java es un lenguaje orientado a objetos. Un lenguaje con orientación estricta a objetos sería Python, donde todo está encapsulado en objetos. Java no es tan estricto y tiene elementos que no son objetos, como los _tipos primitivos_. Los tipos primitivos **a diferencia de los objetos** no tienen referencias, son tan sólo **valores simples guardados en memoria**, en una zona llamada _stack_. Los nombres de los objetos no son direcciones en memoria con un valor asociado, son referencias a otro lugar en memoria llamado _heap_ donde se guarda la información del objeto. Es como si las primitivas fueran la llave de una caja donde podríamos obtener algo, mientras que en los objetos la llave y la caja serían iguales pero el contenido sería un papel con la dirección de lo que queremos obtener. Como el papel siempre cabría en la caja en este último caso lo que obtendríamos podría ser del tamaño que quisiéramos. 
+##
+
+Java es un lenguaje orientado a objetos. Un lenguaje con orientación estricta a objetos sería Python, donde todo está encapsulado en objetos. Java no es tan estricto y tiene elementos que no son objetos, como los _tipos primitivos_. Los tipos primitivos **a diferencia de los objetos** no tienen referencias, son tan sólo **valores simples guardados en memoria**, en una zona llamada _stack_. Los nombres de los objetos no son direcciones en memoria con un valor asociado, son referencias a otro lugar en memoria llamado _heap_ donde se guarda la información del objeto. Es como si las primitivas fueran una caja donde podríamos obtener algo, mientras que en los objetos la llave y la caja serían iguales pero el contenido sería un papel con la dirección de lo que queremos obtener. Como el papel siempre cabría en la caja en este último caso lo que obtendríamos podría ser del tamaño que quisiéramos. 
 
 Esta distinción implica un aspecto esencial de la programación en Java. Dado que los nombres de los objetos son referencias y los de las primitivas devuelven directamente valores, cuando pasamos una variable primitiva a un método pasamos su valor y no hay manera que el método modifique a la variable externa. Al contrario si pasas un objeto, pasas la referencia al lugar en la memoria donde está guardado por lo que los cambios afectan al objeto original. Los métodos en Java son una clase especial de tipos primitivos. 
+
+## Tamaño de los tipos primitivos
+
+* boolean 1 byte
+* char 2 bytes
+* int 4 bytes
+* float 4 bytes
+* long 8 bytes
+* double 8 bytes
 
 # Las matrices
 
