@@ -1,5 +1,11 @@
 /**
  *  Style
  */
+#metadata * {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important; }
+
+.slides {
+  position: relative; }
+
 .reveal {
   font-size: 24px; }

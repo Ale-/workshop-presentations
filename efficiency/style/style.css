@@ -1,0 +1,10 @@
+/**
+ *  Style
+ */
+.reveal {
+  font-size: 24px; }
+
+img {
+    max-height: 500px;
+    width: auto;
+}

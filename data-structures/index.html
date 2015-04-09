@@ -2,21 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
+        <title>Estructuras de Datos</title>
+        <meta name="description" content="Estructuras de Datos">
+                <meta name="author" content="Ale" />
                  
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
          
-        <link rel="stylesheet" href="../../revealjs/css/reveal.css">
-                <link rel="stylesheet" href="../../revealjs/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="revealjs/css/reveal.css">
+                <link rel="stylesheet" href="revealjs/css/theme/black.css" id="theme">
                 <!-- For syntax highlighting -->
-                <link rel="stylesheet" href="../../revealjs/lib/css/zenburn.css">
+                <link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
                  
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
         <script>
-        document.write( '<link rel="stylesheet" href="../../revealjs/css/print/' +
+        document.write( '<link rel="stylesheet" href="revealjs/css/print/' +
         ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
         '.css" type="text/css" media="print">' );
         </script>
@@ -32,14 +33,18 @@
                 <div class="reveal">
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
-         
-                 
-        <section id="estructuras-de-datos" class="level1">
+        <section id="metadata" data-background="imgs/metadata-bg.png">
         <h1>Estructuras de Datos</h1>
-        <hr />
-        <section id="hangar-5-3-2015" class="level2">
-        <h2>Hangar, 5-3-2015</h2>
-        </section>
+        <h3>Ale</h3>
+        <p>
+        <h4>Hangar, 5-3-2015</h4>
+        </p>
+        </section>  
+                 
+        <section id="referencias" class="level1">
+        <h1>Referencias</h1>
+        <p><strong>Repo de processing con los ejercicios</strong> <a href="">https://github.com/Ale-/codeup</a></p>
+        <p><strong>Presentación</strong> <a href="">http://workshops.wwb.cc/data-structures</a></p>
         </section>
         <section id="qué-son-los-datos" class="level1">
         <h1>¿Qué son los datos?</h1>
@@ -47,12 +52,26 @@
         </section>
         <section id="los-tipos-primitivos-y-los-objetos" class="level1">
         <h1>Los tipos primitivos y los objetos</h1>
-        <p>Java es un lenguaje orientado a objetos. Un lenguaje con orientación estricta a objetos sería Python, donde todo está encapsulado en objetos. Java no es tan estricto y tiene elementos que no son objetos, como los <em>tipos primitivos</em>. Los tipos primitivos <strong>a diferencia de los objetos</strong> no tienen referencias, son tan sólo <strong>valores simples guardados en memoria</strong>, en una zona llamada <em>stack</em>. Los nombres de los objetos no son direcciones en memoria con un valor asociado, son referencias a otro lugar en memoria llamado <em>heap</em> donde se guarda la información del objeto. Es como si las primitivas fueran la llave de una caja donde podríamos obtener algo, mientras que en los objetos la llave y la caja serían iguales pero el contenido sería un papel con la dirección de lo que queremos obtener. Como el papel siempre cabría en la caja en este último caso lo que obtendríamos podría ser del tamaño que quisiéramos.</p>
+        <section id="section" class="level2">
+        <h2></h2>
+        <p>Java es un lenguaje orientado a objetos. Un lenguaje con orientación estricta a objetos sería Python, donde todo está encapsulado en objetos. Java no es tan estricto y tiene elementos que no son objetos, como los <em>tipos primitivos</em>. Los tipos primitivos <strong>a diferencia de los objetos</strong> no tienen referencias, son tan sólo <strong>valores simples guardados en memoria</strong>, en una zona llamada <em>stack</em>. Los nombres de los objetos no son direcciones en memoria con un valor asociado, son referencias a otro lugar en memoria llamado <em>heap</em> donde se guarda la información del objeto. Es como si las primitivas fueran una caja donde podríamos obtener algo, mientras que en los objetos la llave y la caja serían iguales pero el contenido sería un papel con la dirección de lo que queremos obtener. Como el papel siempre cabría en la caja en este último caso lo que obtendríamos podría ser del tamaño que quisiéramos.</p>
         <p>Esta distinción implica un aspecto esencial de la programación en Java. Dado que los nombres de los objetos son referencias y los de las primitivas devuelven directamente valores, cuando pasamos una variable primitiva a un método pasamos su valor y no hay manera que el método modifique a la variable externa. Al contrario si pasas un objeto, pasas la referencia al lugar en la memoria donde está guardado por lo que los cambios afectan al objeto original. Los métodos en Java son una clase especial de tipos primitivos.</p>
+        </section>
+        <section id="tamaño-de-los-tipos-primitivos" class="level2">
+        <h2>Tamaño de los tipos primitivos</h2>
+        <ul>
+        <li>boolean 1 byte</li>
+        <li>char 2 bytes</li>
+        <li>int 4 bytes</li>
+        <li>float 4 bytes</li>
+        <li>long 8 bytes</li>
+        <li>double 8 bytes</li>
+        </ul>
+        </section>
         </section>
         <section id="las-matrices" class="level1">
         <h1>Las matrices</h1>
-        <section id="section" class="level2">
+        <section id="section-1" class="level2">
         <h2></h2>
         Las matrices (arrays) son 'bolsas' de memoria que guardan un grupo de valores del mismo tipo (y por lo tanto tamaño). Puede haber arrays de primitivas y de objetos (los arrays de objetos son realmente arrays de referencias a objetos). Se parecen a los objetos en que tienen referencias y se instancian con el operador <strong>new()</strong>. También tienen algunos métodos como length, que devuelve el número de slots que componen el array. Si ejecutamos un:
         <pre><code>MiArray = new int[30];</code></pre> 
@@ -60,7 +79,7 @@
         <pre><code>println(MiArray[3]);</pre>
         <p></code> El programa irá al origen del array en memoria, le sumará el tamaño de un elemento (4 bytes de un int) por el número de elementos previos y leerá los 4 bytes siguientes. Los arrays son muy eficientes porque esta implementación es muy sencilla y se ejecuta a muy bajo nivel. El principal incoveniente es que los arrays no son dinámicos, es decir no se puede cambiar su tamaño una vez instanciados.</p>
         </section>
-        <section id="section-1" class="level2">
+        <section id="section-2" class="level2">
         <h2></h2>
         <figure>
         <img src="imgs/arrays.png" alt="Funcionamiento de un array simple" /><figcaption>Funcionamiento de un array simple</figcaption>
@@ -134,8 +153,8 @@
         </section>
         </div>
          
-        <script src="../../revealjs/lib/js/head.min.js"></script>
-        <script src="../../revealjs/js/reveal.js"></script>
+        <script src="revealjs/lib/js/head.min.js"></script>
+        <script src="revealjs/js/reveal.js"></script>
          
         <script>
             // Full list of configuration options available here:
@@ -151,12 +170,12 @@
                                 transition: Reveal.getQueryHash().transition || 'slide',
                                 // Optional libraries used to extend on reveal.js
                 dependencies: [
-                    { src: '../../revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: '../../revealjs/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '../../revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: '../../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: '../../revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                    { src: '../../revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    { src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'revealjs/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
                 ]
             });
         </script>
