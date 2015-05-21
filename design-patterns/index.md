@@ -9,36 +9,36 @@ El concepto de patrón de diseño surge en el entorno de la programación orient
 # Básicamente
 
 La función de los patrones es múltiple:
+
 * Hacer el código más reusable y mantenible.
 * Crear componentes para una abstracción del lenguaje. Esto facilita la comunicación entre programadores, puede hacer el código comprensible con mayor rapidez y permite la re-apropiación del código con facilidad.
-* DRY ('no te repitas a ti mismo'). Dotar de soluciones contrastadas a problemas habituales. 
+* DRY (_no te repitas a ti mismo_). Dotar de soluciones contrastadas a problemas habituales. 
 
 # Tipos de patrones de diseño
 
 Los patrones de diseño originales se agrupan en tres categorías:
 
-* Patrones de creación
-Son estrategias de creación e instanciación de objetos.
+* _Patrones de creación_. Son estrategias de creación e instanciación de objetos.
 
-* Patrones estructurales
-Son patrones que permiten la estructuración del código y los objetos.
+* _Patrones estructurales_. Son patrones que permiten la estructuración del código y los objetos.
 
-* Patrones de comportamiento
-Son patrones que tienen que ver con las funcionalidades de los objetos.
+* _Patrones de comportamiento_. Son patrones que tienen que ver con las funcionalidades de los objetos.
 
 Por oposición a los patrones existe también el concepto de anti-patrón. 
 
 # Pero no sólo...
 
 Realmente los patrones de diseño no han parado de crecer y hay multitud de ellos. Lo más importante no es sabérselos todos sino interiorizar sus mecanismos. **Para mí** los dos principios más importantes son los siguientes: 
-* Favorecer la abstracción frente la concreción. La indirección de la abstracción permite que el código no esté confinado a las intenciones del diseño original y permite la ampliación flexible del código a medida que sea necesario. Las clases sólo pueden extender de manera única, mientras que pueden implementar de manera múltiple.
-* Desacoplar los funcionamientos y estructuras de las cosas; favorecer la modularidad.
 
-## Un ejemplo
+* _Favorecer la abstracción frente la concreción_. La indirección de la abstracción permite que el código no esté confinado a las intenciones del diseño original y permite la ampliación flexible del código a medida que sea necesario. Las clases sólo pueden extender de manera única, mientras que pueden implementar de manera múltiple.
 
-Así, vamos a comenzar con un patrón de diseño que no es de los originales, [interfaz de constantes](https://en.wikipedia.org/wiki/Constant_interface). Las interfaces en OOP son clases abstractas puras que delegan en las clases que las implementan el concretar el comportamiento. Las interfaces sólo pueden estar compuestas por métodos abstractos y campos estáticos finales. El patrón en cuestión viene a ser encapsular en una interfaz todas las constantes de una librería o programa. [Código fuente de PConstants](https://github.com/processing/processing/blob/master/core/src/processing/core/PConstants.java). Las clases que quieran usar dichas constantes sólo tendran que implementar dicha interfaz. Este sería un patrón estructural, porque define una manera de ordenar nuestro código.
+* _Desacoplar los funcionamientos y estructuras de las cosas_. Favorecer la modularidad.
 
-## ¡Claro!
+# Un ejemplo
+
+## 
+
+Vamos a comenzar con un patrón de diseño que no es de los originales, [interfaz de constantes](https://en.wikipedia.org/wiki/Constant_interface). Las interfaces en OOP son clases abstractas puras que delegan en las clases que las implementan el concretar el comportamiento. Las interfaces sólo pueden estar compuestas por métodos abstractos y campos estáticos finales. El patrón en cuestión viene a ser encapsular en una interfaz todas las constantes de una librería o programa. Por ejemplo, processing usa este patrón para encapsular todas sus constantes ([Código fuente de PConstants](https://github.com/processing/processing/blob/master/core/src/processing/core/PConstants.java)). Las clases que quieran usar dichas constantes sólo tendran que implementar dicha interfaz. Este sería un patrón estructural, porque define una manera de ordenar nuestro código.
 
 En este ejemplo tan sencillo vemos las virtudes y mecanismos habituales de un patrón de diseño. Se desacoplan los datos del comportamiento y se usan la indirección y la abstracción. El resultado final es una estructuración más limpia y fácil de mantener...
 
@@ -46,7 +46,7 @@ En este ejemplo tan sencillo vemos las virtudes y mecanismos habituales de un pa
 
 También traigo este ejemplo a colación porque hay discusión en torno a el, habiendo opiniones que lo consideran un anti-patrón de diseño, con pocos beneficios respecto a sus desventajas. La alternativa sería crear una clase final normal con un constructor privado que se importa estáticamente. Es decir, ¡tampoco hay que fetichizar la indirección ni la abstracción!
 
-```java
+```
 final class Constants {
 	private Constants() { // restrict instantiation }
 	static final double PI = 3.14;
@@ -62,9 +62,12 @@ public class Calculations {
 
 # Y finalmente
 
-De alguna manera todos los patrones son soluciones basadas en clases. Es decir, no son estrategias abstractas sino que son estrategias que se concretan en clases. Un patrón Iterador necesita de una clase Iterator, un patrón Comando usa una clase Comando, etc. En la OOP todo es un objeto, hasta una estrategia abstracta.
+De alguna manera todos los patrones son soluciones basadas en clases. Es decir, no son estrategias abstractas sino que son estrategias que se concretan en clases. Un patrón Iterador necesita de una clase Iterator, un patrón Comando usa una clase Comando, etc. En la OOP todo es un objeto, hasta una estrategia abstracta. 
+Vamos a repasar algunos de los patrones originales, para hacernos una idea de cómo funciona todo esto:
 
 # Patrones estructurales
+
+##
 
 Los patrones estructurales tienen que ver las relaciones entre clases dentro de la estructura del código:
 
@@ -86,9 +89,11 @@ Este patrón es usado de manera natural sin que nos demos cuenta. Intenta que un
 
 # Los patrones de comportamiento
 
+##
+
 Los patrones de comportamiento distribuyen funcionalides y asignan patrones de comunicación entre objetos.
 
-## _Strategy_ y _Command_
+## _Strategy_, _Command_
 
 El patrón _Estrategia_ agrupa algoritmos relacionados de manera que se pueda decidir en tiempo de ejecución cuál se emplea. El patrón _Command_ encapsula un método y le añade un 'meta-comportamiento'. Por ejemplo, se podría emplear para que cada vez que se use un determinado método se mande un mensaje a un registro de eventos o para permitir el clásico Ctrl+Z. Ambos patrones son formalmente parecidos y difíciles de distinguir en la práctica. Las _estrategias_ suelen aceptar argumentos y no tener estado, a diferencia de los _Comandos_. Este tipo de acercamiento (encapsular un método en un objeto) permite el empleo de _callbacks_ en OOP. 
 
@@ -101,6 +106,8 @@ El patrón _Iterador_ está pensado para poder recorrer un conjunto de objetos d
 El patrón _Visitador_ desacopla el comportamiento de un objeto de su definición, de manera que el comportamiento pueda ser modificado o creado por una clase externa, que lo 'visita'. Esto permite extender de manera limpia la funcionalidad de un objeto a discreción sin necesidad de modificar su código original. Es parecido a la física de la vida real, donde las cosas se mueven más por fuerzas externas que internas --como las solemos programar--.
 
 # Los patrones de creación
+
+##
 
 Son patrones relacionados con la creación de objetos, bien delegando o bien modificando la instanciación habitual de los mismos.
 
