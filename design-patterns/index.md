@@ -80,7 +80,7 @@ El patrón _Fachada_ es útil para crear una interfaz simple sobre otra compleja
 
 Un patrón _Adaptador_ intenta resolver las incompatibilidades entre clases que no estuvieron diseñadas para trabajar juntas. Un ejemplo obvio en Processing es el de los vectores. Processing usa por ejemplo la clase PVector y la librería Geomerative usa la clase RVector. Esto hace que haya incompatibilidades entre clases nativas a ambas librerías y que podrían trabajar juntas perfectamente. Una solución es crear una clase 'adaptadora' que resuelva de manera invisible al usuario dicha incompatibilidad.
 
-## Flyweight
+## _Flyweight_
 
 Este patrón es usado de manera natural sin que nos demos cuenta. Intenta que una familia de objetos comparta tantos datos como le sea posible, reduciendo al mínimo el peso de sus elementos individuales. Se ha usado por ejemplo en editores de texto, donde los objetos serían los caracteres individuales. Si por ejemplo creamos una familia de partículas y una clase gestora con los datos comunes entre ellas, estaríamos usando este patrón de alguna manera. 
 
@@ -90,7 +90,7 @@ Los patrones de comportamiento distribuyen funcionalides y asignan patrones de c
 
 ## _Strategy_ y _Command_
 
-El patrón _Estrategia_ agrupa algoritmos relacionados de manera que se pueda decidir en tiempo de ejecución cuál se emplea. El patrón _Command_ encapsula un método y le añade un 'meta-comportamiento'. Por ejemplo, se podría emplear para que cada vez que se use un determinado método se mande un mensaje a un registro de eventos o para permitir el clásico Ctrl+Z. Ambos patrones son formalmente parecidos y difíciles de distinguir en la práctica. Las _estrategias_ suelen aceptar argumentos y no tener estado, a diferencia de los _Comandos_. Este tipo de acercamiento (encapsultar un método en un objeto) permite el empleo de _callbacks_ en OOP. 
+El patrón _Estrategia_ agrupa algoritmos relacionados de manera que se pueda decidir en tiempo de ejecución cuál se emplea. El patrón _Command_ encapsula un método y le añade un 'meta-comportamiento'. Por ejemplo, se podría emplear para que cada vez que se use un determinado método se mande un mensaje a un registro de eventos o para permitir el clásico Ctrl+Z. Ambos patrones son formalmente parecidos y difíciles de distinguir en la práctica. Las _estrategias_ suelen aceptar argumentos y no tener estado, a diferencia de los _Comandos_. Este tipo de acercamiento (encapsular un método en un objeto) permite el empleo de _callbacks_ en OOP. 
 
 ## _Iterator_
 
@@ -106,7 +106,7 @@ Son patrones relacionados con la creación de objetos, bien delegando o bien mod
 
 ## _Singleton_
 
-Un patrón Singleton impide que una clase se instancie más de una vez en un programa. Para ello hace al constructor de la clase privado, sólo accesible desde un método público que comprueba si ya se ha producido una instanciación de la clase e impidiendo en este caso la generación de un nuevo objeto. Es muy útil en programación concurrente, donde puede ser inseguro que haya más de un objeto de una clase encargada de acceder a un recurso externo (en la web, un fichero, etc.)
+Un patrón _Singleton_ impide que una clase se instancie más de una vez en un programa. Para ello hace al constructor de la clase privado, sólo accesible desde un método público que comprueba si ya se ha producido una instanciación de la clase e impidiendo en este caso la generación de un nuevo objeto. Es muy útil en programación concurrente, donde puede ser inseguro que haya más de un objeto de una clase encargada de acceder a un recurso externo (en la web, un fichero, etc.)
 
 ## _Factory_
 
