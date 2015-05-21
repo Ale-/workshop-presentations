@@ -30,9 +30,9 @@ Por oposición a los patrones existe también el concepto de anti-patrón.
 
 # Pero no sólo...
 
-Realmente los patrones de diseño no han parado de crecer y hay multitud de ellos. Lo más importante no es sabérselos todos sino interiorizar sus mecanismos. Para mí los dos más importantes son los siguientes: 
-* Favorece la abstracción frente la concreción. La indirección de la abstracción permite que el código no esté confinado a las intenciones del diseño original y permite la ampliación flexible del código a medida que sea necesario.
-* Desacopla los funcionamientos y estructuras de las cosas. Favorece la modularidad.
+Realmente los patrones de diseño no han parado de crecer y hay multitud de ellos. Lo más importante no es sabérselos todos sino interiorizar sus mecanismos. **Para mí** los dos principios más importantes son los siguientes: 
+* Favorecer la abstracción frente la concreción. La indirección de la abstracción permite que el código no esté confinado a las intenciones del diseño original y permite la ampliación flexible del código a medida que sea necesario. Las clases sólo pueden extender de manera única, mientras que pueden implementar de manera múltiple.
+* Desacoplar los funcionamientos y estructuras de las cosas; favorecer la modularidad.
 
 ## Un ejemplo
 
@@ -60,13 +60,37 @@ public class Calculations {
 
 ```
 
+# Y finalmente
+
+De alguna manera todos los patrones son soluciones basadas en clases. Es decir, no son estrategias abstractas sino que son estrategias que se concretan en clases. Un patrón Iterador necesita de una clase Iterator, un patrón Comando usa una clase Comando, etc. En la OOP todo es un objeto, hasta una estrategia abstracta.
+
+# Patrones estructurales
+
+Los patrones estructurales tienen que ver las relaciones entre clases dentro de la estructura del código:
+
+## _Decorator_
+
+El patrón __Decorador__ es útil para crear familias de objetos basados unos en otros y es usado, por ejemplo, para la creación de elementos de una interfaz gráfica. Por ejemplo podríamos querer crear un elemento 'Ventana', otro 'Ventana con botón de minimizar', otro 'Ventana con botón de minimizar y barras de scroll', etc. Cada clase añadiría pequeñas variaciones a otras clases del set, es decir, las 'decoraría'. 
+
+## _Facade_
+
+El patrón _Fachada_ es útil para crear una interfaz simple sobre otra compleja, que facilite las interacciones o las haga más cómodas a criterio del programador. Por ejemplo podemos tener una biblioteca de matemáticas muy potente de Java, pero compleja de usar y podríamos programar una interfaz alternativa sobre esta que simplificase nuestras interacciones o que facilitara las más comunes.
+
+## _Adapter_
+
+Un patrón _Adaptador_ intenta resolver las incompatibilidades entre clases que no estuvieron diseñadas para trabajar juntas. Un ejemplo obvio en Processing es el de los vectores. Processing usa por ejemplo la clase PVector y la librería Geomerative usa la clase RVector. Esto hace que haya incompatibilidades entre clases nativas a ambas librerías y que podrían trabajar juntas perfectamente. Una solución es crear una clase 'adaptadora' que resuelva de manera invisible al usuario dicha incompatibilidad.
+
+## Flyweight
+
+Este patrón es usado de manera natural sin que nos demos cuenta. Intenta que una familia de objetos comparta tantos datos como le sea posible, reduciendo al mínimo el peso de sus elementos individuales. Se ha usado por ejemplo en editores de texto, donde los objetos serían los caracteres individuales. Si por ejemplo creamos una familia de partículas y una clase gestora con los datos comunes entre ellas, estaríamos usando este patrón de alguna manera. 
+
 # Los patrones de comportamiento
 
-Los patrones de comportamiento distribuyen responsabilidades/comportamientos/funcionalidades entre objetos y asignan patrones de comunicación entre objetos.
+Los patrones de comportamiento distribuyen funcionalides y asignan patrones de comunicación entre objetos.
 
-## _Command_
+## _Strategy_ y _Command_
 
-Es de los más fáciles de entender y empezar a aplicar, siendo de gran utilidad. El patrón _Command_ encapsula un método en un objeto. Esta es la manera de resolver _callbacks_ en OOP, es decir es la respuesta a la clásica pregunta: ¿cómo le paso un método a otro? También es la manera en que se crea la funcionalidad de _deshacer_ (Ctrl+Z), ya que los objetos los podemos almacenar a diferencia de los métodos.
+El patrón _Estrategia_ agrupa algoritmos relacionados de manera que se pueda decidir en tiempo de ejecución cuál se emplea. El patrón _Command_ encapsula un método y le añade un 'meta-comportamiento'. Por ejemplo, se podría emplear para que cada vez que se use un determinado método se mande un mensaje a un registro de eventos o para permitir el clásico Ctrl+Z. Ambos patrones son formalmente parecidos y difíciles de distinguir en la práctica. Las _estrategias_ suelen aceptar argumentos y no tener estado, a diferencia de los _Comandos_. Este tipo de acercamiento (encapsultar un método en un objeto) permite el empleo de _callbacks_ en OOP. 
 
 ## _Iterator_
 
@@ -74,23 +98,17 @@ El patrón _Iterador_ está pensado para poder recorrer un conjunto de objetos d
 
 ## _Visitor_
 
-El patrón _Visitador_ desacopla el comportamiento de un objeto de su definición, de manera que el comportamiento lo efectua una clase externa, que lo 'visita'. Esto permite extender de manera limpia la funcionalidad de un objeto a discreción sin necesidad de modificar su código.
-
-# Patrones estructurales
-
-## _Decorator_
-
-## _Facade_
+El patrón _Visitador_ desacopla el comportamiento de un objeto de su definición, de manera que el comportamiento pueda ser modificado o creado por una clase externa, que lo 'visita'. Esto permite extender de manera limpia la funcionalidad de un objeto a discreción sin necesidad de modificar su código original. Es parecido a la física de la vida real, donde las cosas se mueven más por fuerzas externas que internas --como las solemos programar--.
 
 # Los patrones de creación
 
-Los patrones de creación son bastante habituales. Estos patrones delegan la creación de objetos en otros objetos. Es decir, en vez de crear objetos con el operador _new()_, usamos métodos definidos en otros objetos (volvemos a la indirección).  
-
-## _Generator_
-
-## _Factory_
+Son patrones relacionados con la creación de objetos, bien delegando o bien modificando la instanciación habitual de los mismos.
 
 ## _Singleton_
 
-Un patrón Singleton impide que una clase se instancie más de una vez en un programa. Para ello hace al constructor de la clase privado, sólo accesible desde un método público que comprueba si ya se ha producido una instanciación de la clase e impidiendo en este caso la generación de un nuevo objeto.
+Un patrón Singleton impide que una clase se instancie más de una vez en un programa. Para ello hace al constructor de la clase privado, sólo accesible desde un método público que comprueba si ya se ha producido una instanciación de la clase e impidiendo en este caso la generación de un nuevo objeto. Es muy útil en programación concurrente, donde puede ser inseguro que haya más de un objeto de una clase encargada de acceder a un recurso externo (en la web, un fichero, etc.)
+
+## _Factory_
+
+En una _Factoría_ se construyen objetos, de manera que se puedan desacoplar ambas fases. Hay de varios tipos. Una Factoría recibe argumentos que le permiten saber qué tipo de objeto requiere el usuario, si la factoría es normal nos devolverá el objeto deseado. Si es abstracta nos devolverá otra factoría concreta encargada de instanciar dicho objeto, desacoplando todavía más los procesos.   
 
